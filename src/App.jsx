@@ -15,7 +15,7 @@ import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import { CartProvider, CartContext } from './contexts/CartContext';
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 let firebaseApp;
