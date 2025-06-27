@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@tailwind utilities;
+
 /* Optional: Add basic body styles here if not in App.jsx */
 body {
   margin: 0;
