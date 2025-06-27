@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* --- Base Body Styles --- */
+body, html, #root {
+  font-family: 'Lora', serif !important;
+  background-color: #f5f0e1 !important;
+  color: #3f3e3a !important;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif !important;
+  color: #4a453e !important;
+  margin: 1.2em 0 0.8em;
+  line-height: 1.2;
+}
+
+/* Force override heading sizes */
+h1 { font-size: 3.2rem !important; }
+h2 { font-size: 2.4rem !important; }
+h3 { font-size: 1.8rem !important; }
+
+/* Cards */
+.bg-white, .bg-gray-50, .bg-gray-100 {
+  background-color: #fffefb !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover for cards */
+.card-hover:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Buttons */
+button, .button {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
+  padding: 0.8rem 1.8rem !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Tailwind colored buttons */
+.bg-blue-600, .bg-purple-600, .bg-green-600 {
+  background-color: #6a5c4e !important;
+  color: #f9f6f2 !important;
+  border-color: #5c5044 !important;
+}
+.bg-blue-600:hover, .bg-purple-600:hover, .bg-green-600:hover {
+  background-color: #5c5044 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Secondary Buttons */
+.bg-gray-200, .bg-red-600 {
+  background-color: #e0d9cc !important;
+  color: #5c5044 !important;
+  border-color: #c9c1b3 !important;
+}
+.bg-gray-200:hover, .bg-red-600:hover {
+  background-color: #d1c8bb !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-0.5px) !important;
+}
+
+/* Disabled Button */
+button:disabled, .button:disabled {
+  background-color: #c0b8ac !important;
+  color: #8c857a !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  font-family: 'Lora', serif !important;
+  background-color: #fdfaf5 !important;
+  border: 1px solid #c9c1b3 !important;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: #3f3e3a !important;
+}
+input:focus,
+textarea:focus {
+  border-color: #8c857a !important;
+  box-shadow: 0 0 0 2px rgba(106, 92, 78, 0.2) !important;
+  outline: none !important;
+}
+
+/* Navbar */
+.bg-white.shadow-md {
+  background-color: #f0e6d6 !important;
+  border-bottom: 1px solid #d4c8b6 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+.nav-link {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600;
+  color: #5c5044 !important;
+  transition: all 0.2s ease;
+}
+.nav-link:hover {
+  color: #8c857a !important;
+  transform: translateY(-1px);
+}
+
+/* Vintage Decorative Section */
+.page-deco {
+  border-top: 1px dashed #d1c8bb;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #a19a91;
+}
