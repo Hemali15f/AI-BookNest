@@ -7,7 +7,7 @@ import { Search } from 'lucide-react';
 
 const Home = ({ navigate, setSelectedBook }) => {
   const { user } = useContext(AuthContext);
-  const [searchTerm, setSearchTerm] = useState('programming');
+  const [searchTerm, setSearchTerm] = useState('');
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -88,7 +88,7 @@ const Home = ({ navigate, setSelectedBook }) => {
         {!loading && !error && books.length === 0 && (
           <p className="text-center text-gray-600 text-xl mt-10">No books found matching your criteria. Try a different search!</p>
         )}
-
+https://github.com/Hemali15f/AI-BookNest/blob/main/src/components/Books/Home.jsx
         {!loading && !error && books.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
             {books.map(book => (
