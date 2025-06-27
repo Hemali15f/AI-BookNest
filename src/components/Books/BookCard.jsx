@@ -18,11 +18,15 @@ const BookCard = ({ book, onClick, userCurrencySymbol }) => {
       onClick={onClick}
     >
       <img
-        src={book.imageUrl}
-        alt={book.title}
-        className="w-full h-64 object-cover"
-        onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/150x200/cccccc/333333?text=${encodeURIComponent(book.title.substring(0, 10))}`; }}
-      />
+  src={book.imageUrl?.replace(/^http:/, 'https:')}
+  alt={book.title}
+  className="w-full h-64 object-cover"
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = `https://placehold.co/150x200/cccccc/333333?text=${encodeURIComponent(book.title?.substring(0, 10) || 'Book')}`;
+  }}
+/>
+
       <div className="p-4">
         <h3 className="text-xl font-bold text-gray-800 mb-1 truncate">{book.title}</h3>
         <p className="text-gray-600 text-sm mb-2 truncate">by {book.author}</p>
