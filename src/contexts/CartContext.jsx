@@ -1,10 +1,13 @@
-import React, { createContext, useState, useEffect } from 'react';
+
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { AuthContext } from './AuthContext'; // ✅ Add this line
 
 // CartContext for managing the shopping cart state
 export const CartContext = createContext();
 
 // CartProvider for managing cart logic and state
 export const CartProvider = ({ children }) => {
+  const { user } = useContext(AuthContext); // ✅ Use AuthContext to get the current user
   const [cartItems, setCartItems] = useState(() => {
     const storedCart = localStorage.getItem('ai_booknest_cart');
     return storedCart ? JSON.parse(storedCart) : [];
@@ -14,6 +17,12 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('ai_booknest_cart', JSON.stringify(cartItems));
   }, [cartItems]);
+  useEffect(() => {
+  if (!user) {
+    setCartItems([]); // clear cart on logout
+  }
+}, [user]);
+
 
   // Add item to cart
   const addToCart = (book) => {
