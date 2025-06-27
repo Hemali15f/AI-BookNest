@@ -1,30 +1,56 @@
-
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { AuthContext } from './AuthContext'; // ✅ Add this line
+import { AuthContext } from './AuthContext';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-// CartContext for managing the shopping cart state
+// Create CartContext
 export const CartContext = createContext();
 
-// CartProvider for managing cart logic and state
 export const CartProvider = ({ children }) => {
-  const { user } = useContext(AuthContext); // ✅ Use AuthContext to get the current user
+  const { user, dbInstance } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState(() => {
     const storedCart = localStorage.getItem('ai_booknest_cart');
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
-  // Update localStorage whenever cartItems change
+  // 🟢 Load cart from Firestore on login
+  useEffect(() => {
+    const loadCart = async () => {
+      if (user && dbInstance) {
+        try {
+          const cartRef = doc(dbInstance, 'carts', user.uid);
+          const docSnap = await getDoc(cartRef);
+          if (docSnap.exists()) {
+            setCartItems(docSnap.data().items || []);
+          }
+        } catch (err) {
+          console.error('Error loading cart from Firestore:', err);
+        }
+      }
+    };
+    loadCart();
+  }, [user, dbInstance]);
+
+  // 🟢 Save cart to Firestore when it changes
+  useEffect(() => {
+    if (user && dbInstance) {
+      const cartRef = doc(dbInstance, 'carts', user.uid);
+      setDoc(cartRef, { items: cartItems }, { merge: true });
+    }
+  }, [cartItems, user, dbInstance]);
+
+  // 🟢 Sync cart to localStorage
   useEffect(() => {
     localStorage.setItem('ai_booknest_cart', JSON.stringify(cartItems));
   }, [cartItems]);
+
+  // 🔴 Clear cart on logout
   useEffect(() => {
-  if (!user) {
-    setCartItems([]); // clear cart on logout
-  }
-}, [user]);
+    if (!user) {
+      setCartItems([]);
+    }
+  }, [user]);
 
-
-  // Add item to cart
+  // ➕ Add item
   const addToCart = (book) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === book.id);
@@ -37,7 +63,7 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // Remove item from cart (or decrease quantity)
+  // ➖ Remove item
   const removeFromCart = (bookId) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.id === bookId);
@@ -50,16 +76,25 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // Clear the entire cart
+  // ❌ Clear cart
   const clearCart = () => {
     setCartItems([]);
   };
 
+  // 💵 Total price
   const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, cartTotal, setCartItems }}>
-
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        cartTotal,
+        setCartItems,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
