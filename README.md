@@ -1,70 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 📘 AI‑BookNest
 
-## Available Scripts
+An AI-powered platform to explore and interact with books—upload text or PDFs, ask questions, get summaries, and more.
 
-In the project directory, you can run:
+#### Features
 
-### `npm start`
+* 📚 **Book Upload** – Drop in your PDF or text file to start analyzing.
+* 🧠 **Natural‑Language Q\&A** – Ask questions about the content and get AI-generated answers.
+* 📝 **Chapter / Interval Summaries** – Automatically generate summaries for chapters or page ranges.
+* 🔍 **Keyword Extraction** – Discover main themes and concepts within the text.
+* 🗂️ **Knowledge Storage** – Save insights and revisit them anytime during your session.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Live Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Check it out here: [https://ai-powered-booknest.vercel.app/](https://ai-powered-booknest.vercel.app/)
 
-### `npm test`
+#### Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repo**
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/Hemali15f/AI-BookNest.git
+   cd AI-BookNest
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies**
+   For example, using Node.js:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Configure environment**
+   Set up `.env`:
 
-### `npm run eject`
+   ```
+   OPENAI_API_KEY=your_openai_key
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Run locally**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm run dev
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   The app will typically be available at `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Usage
 
-## Learn More
+* Upload your book file.
+* Choose an AI model (e.g. GPT‑4, GPT‑3.5).
+* Ask questions or generate summaries.
+* Review the output in the interface.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```text
+.
+├── public/                # Static assets
+├── src/
+│   ├── components/        # UI components (UploadForm, QA, SummaryView)
+│   ├── pages/             # Routes (index.tsx, api/)
+│   └── utils/             # Helpers (OpenAI integration, file parsing)
+├── .env.local             # API keys
+├── package.json
+└── README.md
+```
 
-### Code Splitting
+#### Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Next.js (TypeScript)
+* React + Tailwind CSS / Chakra UI
+* Google Generative API for AI capabilities and Google Books API of books
+* Vercel for deployment (as seen at the provided URL)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
